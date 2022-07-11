@@ -30,7 +30,7 @@ services:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "pa55w0rd!"
+      SA_PASSWORD: "<password>"
       MSSQL_PID: "Expression"
     ports:
       - "1433:1433"
@@ -39,11 +39,11 @@ services:
 docker-compose up -d
 docker-compose stop
 
-conect to database 127.0.0.1  sa/pa55w0rd!
+conect to database 127.0.0.1  sa/<password>
 
 --set userid secret
 dotnet user-secrets set "UserId" "sa"
-dotnet user-secrets set "Password" "pa55w0rd!"
+dotnet user-secrets set "Password" "<password>"
 
 dotnet ef migrations add initialmigration
 dotnet tool update --global dotnet-ef
